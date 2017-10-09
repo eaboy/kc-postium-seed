@@ -10,14 +10,7 @@
     | Un clic sobre el autor debería enviar un evento al componente padre.     |
     |========================================================================-->
     <span class="name blink-font">{{ post.author.name }}</span>
-
-    <!--=======================================================================|
-    | Blue Path                                                                |
-    |==========================================================================|
-    | Una vez tengas creado el pipe FromNowPipe, úsalo con la fecha de         |
-    | publicación.                                                             |
-    |========================================================================-->
-    <span class="date">{{ post.publicationDate }}</span>
+    <span class="date">{{ post.publicationDate | fromNow }}</span> <!-- Blue Path -->
 
   </div>
 </div>
