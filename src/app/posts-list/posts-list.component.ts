@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Post } from '../post';
@@ -11,6 +12,9 @@ export class PostsListComponent {
 
   @Input() posts: Post[];
 
+  constructor(private router: Router){}
+
+
   /*=========================================================================|
   | Red Path                                                                 |
   |==========================================================================|
@@ -21,14 +25,8 @@ export class PostsListComponent {
   | parámetro el identificador del autor.                                    |
   |=========================================================================*/
 
-  /*=========================================================================|
-  | Green Path                                                               |
-  |==========================================================================|
-  | Maneja el evento del componente PostPreviewComponent que indica la       |
-  | selección de un post y navega a la dirección correspondiente. Recuerda   |
-  | que para hacer esto necesitas inyectar como dependencia el Router de la  |
-  | app. La ruta a navegar es '/posts', pasando como parámetro el            |
-  | identificador del post.                                                  |
-  |=========================================================================*/
+  openPost(post: Post): void {
+    this.router.navigate(['/posts', post.id]); // Green Path
+  }
 
 }

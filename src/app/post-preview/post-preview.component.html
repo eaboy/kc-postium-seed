@@ -10,17 +10,14 @@
     | Un clic sobre el autor debería enviar un evento al componente padre.     |
     |========================================================================-->
     <span class="name blink-font">{{ post.author.name }}</span>
-    <span class="date">{{ post.publicationDate | fromNow }}</span> <!-- Blue Path -->
+    <!-- Blue Path -->
+    <span class="date">{{ post.publicationDate | fromNow }}</span> 
 
   </div>
 </div>
 
-<!--=======================================================================|
-| Green Path                                                               |
-|==========================================================================|
-| Un clic sobre el post debería enviar un evento al componente padre.      |
-|========================================================================-->
-<div class="post">
+<!-- Green Path -->
+<div class="post" (click)="notifyPostClicked(post)">
   <h3>{{ post.title }}</h3>
   <img *ngIf="post.media" [src]="post.media" class="u-max-full-width">
   <div class="html-text" [innerHtml]="plainTextToHtml(post.intro)"></div>
