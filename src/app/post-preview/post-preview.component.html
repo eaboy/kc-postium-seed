@@ -4,12 +4,8 @@
   </div>
   <div class="author">
 
-    <!--=======================================================================|
-    | Red Path                                                                 |
-    |==========================================================================|
-    | Un clic sobre el autor debería enviar un evento al componente padre.     |
-    |========================================================================-->
-    <span class="name blink-font">{{ post.author.name }}</span>
+    <!-- Red Path -->
+    <span class="name blink-font" (click)="notifyAuthorClicked(post)">{{ post.author.name }}</span>
     <!-- Blue Path -->
     <span class="date">{{ post.publicationDate | fromNow }}</span> 
 

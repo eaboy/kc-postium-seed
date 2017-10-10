@@ -5,12 +5,8 @@
     </div>
     <div class="author">
 
-      <!--=======================================================================|
-      | Red Path                                                                 |
-      |==========================================================================|
-      | Un clic sobre el autor debería navegar a su colección de posts.          |
-      |========================================================================-->
-      <span class="name blink-font">{{ post.author.name }}</span>
+      <!-- Red Path -->
+      <span class="name blink-font" (click)="authorClicked(post)">{{ post.author.name }}</span>
       <!-- Blue Path -->
       <span class="date">{{ post.publicationDate | fromNow }}</span> 
 

@@ -13,14 +13,9 @@ export class PostsResolveService implements Resolve<Post[]> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Post[]> {
 
-    /*=========================================================================|
-    | Red Path                                                                 |
-    |==========================================================================|
-    | Modifica este Resolve para que, en caso de tener que obtener los posts   |
-    | correspondientes a un usuario, llame a la función 'getUserPosts()' del   |
-    | servicio PostService. Recuerda mirar en los parámetros de la ruta, a ver |
-    | qué encuentras.                                                          |
-    |=========================================================================*/
+    if (route.params.userId) { // Red Path
+      return this._postService.getUserPosts(route.params.userId);
+    }
 
     /*=========================================================================|
     | Yellow Path                                                              |

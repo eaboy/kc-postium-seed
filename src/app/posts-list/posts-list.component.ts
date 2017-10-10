@@ -14,19 +14,12 @@ export class PostsListComponent {
 
   constructor(private router: Router){}
 
+  openAuthorPosts(post: Post): void { // Red Path
+    this.router.navigate(['/posts/users', post.author.id]);
+  }
 
-  /*=========================================================================|
-  | Red Path                                                                 |
-  |==========================================================================|
-  | Maneja el evento del componente PostPreviewComponent que indica la       |
-  | selección del autor de un post y navega a la dirección correspondiente.  |
-  | Recuerda que para hacer esto necesitas inyectar como dependencia el      |
-  | Router de la app. La ruta a navegar es '/posts/users', pasando como      |
-  | parámetro el identificador del autor.                                    |
-  |=========================================================================*/
-
-  openPost(post: Post): void {
-    this.router.navigate(['/posts', post.id]); // Green Path
+  openPost(post: Post): void { // Green Path
+    this.router.navigate(['/posts', post.id]);
   }
 
 }

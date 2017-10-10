@@ -14,38 +14,25 @@ export class PostService {
 
   getPosts(): Observable<Post[]> {
 
-    const httpOptions = {
+    const httpOptions = { // Pink Path
       params: new HttpParams().set('_sort', 'publicationDate')
                               .set('_order', 'desc')
                               .set('publicationDate_lte', `${Date.now()}`)
     };
 
-    return this._http.get<Post[]>(`${environment.backendUri}/posts`, httpOptions);
+    return this._http.get<Post[]>(`${environment.backendUri}/posts`, httpOptions); // Pink Path
   }
 
   getUserPosts(id: number): Observable<Post[]> {
 
-    /*=========================================================================|
-    | Red Path                                                                 |
-    |==========================================================================|
-    | Ahora mismo, esta función está obteniendo todos los posts existentes, y  |
-    | solo debería obtener aquellos correspondientes al autor indicado. Añade  |
-    | los parámetros de búsqueda oportunos para que retorne solo los posts que |
-    | buscamos. Ten en cuenta que, además, deben estar ordenados por fecha de  |
-    | publicación descendente y obtener solo aquellos que estén publicados.    |
-    |                                                                          |
-    | En la documentación de 'JSON Server' tienes detallado cómo hacer el      |
-    | filtro y ordenación de los datos en tus peticiones, pero te ayudo        |
-    | igualmente. La querystring debe tener estos parámetros:                  |
-    |                                                                          |
-    |   - Filtro por autor: author.id=autor                                    |
-    |   - Filtro por fecha de publicación: publicationDate_lte=fecha           |
-    |   - Ordenación: _sort=publicationDate&_order=DESC                        |
-    |                                                                          |
-    | Una pista más, por si acaso: HttpParams.                                 |
-    |=========================================================================*/
+    const httpOptions = { // Red Path
+      params: new HttpParams().set('_sort', 'publicationDate')
+                              .set('_order', 'desc')
+                              .set('publicationDate_lte', `${Date.now()}`)
+                              .set('author.id',`${id}`)
+    };
 
-     return this._http.get<Post[]>(`${environment.backendUri}/posts`);
+     return this._http.get<Post[]>(`${environment.backendUri}/posts`, httpOptions); // Red Path
   }
 
   getCategoryPosts(id: number): Observable<Post[]> {
