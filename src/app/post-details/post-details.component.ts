@@ -1,3 +1,4 @@
+import { UserService } from '../user.service';
 import { Category } from '../category';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class PostDetailsComponent implements OnInit {
   constructor(
     private router: Router, // Red Path
     private _activatedRoute: ActivatedRoute,
+    private _userService: UserService, // Broken White Path
     @Inject(NativeWindow) private _window) { }
 
   ngOnInit(): void {
@@ -37,6 +39,14 @@ export class PostDetailsComponent implements OnInit {
 
   openCategoryPosts(category: Category): void { // Yellow Path
     this.router.navigate(['/posts/categories', category.id]);
+  }
+  
+  private sameUser(): Boolean { // Broken White Path
+    return this._userService.getDefaultUser().id === this.post.author.id;
+  }
+
+  private gotoEditPost(post: Post): void { // Broken White Path
+    this.router.navigate(['/edit-story', post.id]);
   }
 
 }

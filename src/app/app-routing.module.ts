@@ -9,6 +9,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostsByCategoryComponent } from './posts-by-category/posts-by-category.component';
 import { PostsByAuthorComponent } from './posts-by-author/posts-by-author.component';
 import { PostsViewComponent } from './posts-view/posts-view.component';
+import { EditStoryComponent } from './edit-story/edit-story.component'; // Broken White Path
 
 @NgModule({
   imports: [
@@ -37,6 +38,12 @@ import { PostsViewComponent } from './posts-view/posts-view.component';
     }, {
       path: 'posts/:postId',
       component: PostDetailsComponent,
+      resolve: {
+        post: PostDetailsResolveService
+      }
+    }, {
+      path: 'edit-story/:postId', // Broken White Path
+      component: EditStoryComponent,
       resolve: {
         post: PostDetailsResolveService
       }

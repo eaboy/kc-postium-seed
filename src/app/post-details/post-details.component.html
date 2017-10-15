@@ -11,6 +11,11 @@
       <span class="date">{{ post.publicationDate | fromNow }}</span> 
 
     </div>
+      <!-- Broken White Path -->
+      <button
+        class="button-primary u-pull-right"
+        *ngIf="sameUser()"
+        (click)="gotoEditPost(post)">Editar Post</button>
   </div>
 </div>
 <div class="post">

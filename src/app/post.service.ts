@@ -63,4 +63,9 @@ export class PostService {
     return this._http.post<Post>(`${environment.backendUri}/posts`, post); // Purple Path    
   }
 
+  updatePost(post: Post): Observable<Post> { // Broken White Path
+    console.log(post);
+    return this._http.put<Post>(`${environment.backendUri}/posts/${post.id}`, post);
+  }
+
 }

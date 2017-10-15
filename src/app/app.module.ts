@@ -29,6 +29,7 @@ import { PostsViewComponent } from './posts-view/posts-view.component';
 import { PostService } from './post.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { UserService } from './user.service';
+import { EditStoryComponent } from './edit-story/edit-story.component'; // Broken White Path
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { UserService } from './user.service';
     PostsListComponent,
     PostsViewComponent,
     SearchBoxComponent,
-    FromNowPipe // Blue Path
+    FromNowPipe, // Blue Path
+    EditStoryComponent // Broken White Path
   ],
   providers: [
     CategoryResolveService,
